@@ -1,4 +1,4 @@
-# vue2-exercises
+# vue-examples
 
 Vue 2 基礎學習筆記與可直接在瀏覽器開啟的練習頁面。範例透過本地 `js/vue.js` 載入 **Vue.js 2.7.16**，不是 Vue CLI、Vite 或 Vue 3 專案。
 

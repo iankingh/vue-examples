@@ -1,5 +1,5 @@
 {
-  "name": "vue2-exercises-browser-checks",
+  "name": "vue-examples-browser-checks",
   "private": true,
   "scripts": {
     "test": "node --test tests/*.test.mjs"
