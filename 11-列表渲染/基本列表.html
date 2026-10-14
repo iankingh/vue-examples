@@ -16,13 +16,16 @@
                 <span>{{person.id}}</span>
                 <span>{{person.name}}</span>
                 <span>{{person.age}}</span>
+                <input :placeholder="person.name" aria-label="未儲存的輸入">
             </li>
         </ul>
         ---------------------------------------
         <h2>人員列表(List)</h2>
+        <p>此處刻意用 index 作為 key；重排後，未受 Vue 綁定的輸入值會留在原位置，可能對應到另一位同學。</p>
         <ul>
             <li v-for="(person,index) in persons" :key="index">
                 {{index}}-{{person.name}}
+                <input :placeholder="person.name" aria-label="未儲存的輸入">
             </li>
         </ul>
 

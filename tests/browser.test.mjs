@@ -31,9 +31,9 @@ async function open(t, path) {
   return page;
 }
 
-test('empty starter mounts Vue 2.7.14', async t => {
+test('empty starter mounts Vue 2.7.16', async t => {
   const page = await open(t, '01-vue/vue.html');
-  assert.equal(await page.evaluate(() => Vue.version), '2.7.14');
+  assert.equal(await page.evaluate(() => Vue.version), '2.7.16');
   assert.equal(await page.locator('#root').innerText(), '');
 });
 
@@ -108,4 +108,21 @@ test('array/object rendering and ID-key vs index-key DOM identity survive reorde
   assert.equal(await page.locator('ul').nth(0).locator('li').count(), 5);
   assert.equal(await page.evaluate(() => document.querySelectorAll('ul:nth-of-type(1) li')[1] === window.originalIdNodes[3]), true);
   assert.match(await page.locator('ul').nth(1).locator('li').first().innerText(), /0-新同學/);
+});
+
+test('list lesson demonstrates index keys reusing form state for a different person', async t => {
+  const page = await open(t, '11-列表渲染/基本列表.html');
+  assert.match(await page.locator('p').innerText(), /刻意用 index 作為 key/);
+  const indexInputs = page.locator('ul').nth(1).locator('input');
+  const idInputs = page.locator('ul').nth(0).locator('input');
+  await indexInputs.nth(0).fill('小明的未儲存輸入');
+  await idInputs.nth(0).fill('小明的未儲存輸入');
+  await page.evaluate(async () => {
+    document.querySelector('#root').__vue__.persons.reverse();
+    await document.querySelector('#root').__vue__.$nextTick();
+  });
+  assert.match(await page.locator('ul').nth(1).locator('li').first().innerText(), /0-小雞/);
+  assert.equal(await indexInputs.nth(0).inputValue(), '小明的未儲存輸入');
+  assert.equal(await indexInputs.nth(0).getAttribute('placeholder'), '小雞');
+  assert.equal(await idInputs.last().inputValue(), '小明的未儲存輸入');
 });
