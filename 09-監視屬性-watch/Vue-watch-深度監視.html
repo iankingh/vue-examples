@@ -1,53 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue-watch</title>
-    <script type="text/javascript" src="../js/vue.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>深度監視與物件替換 | Vue 3 範例</title>
 </head>
-<body>
-    <div id="root">
-        <!-- 
-        深度監視:
-            1. watch 預設是淺層監視；物件本身被替換時會觸發，但內部屬性變化不會觸發
-            2. 若要監視物件內部屬性的變化，需要設定 deep: true
-        注意事項:
-            物件內部屬性變化時，newVal 與 oldVal 會指向同一個物件，因為 Vue 不會保留變更前的深層副本
-        -->
-    
-        <h2>numbers.a: {{numbers.a}}</h2>
-        <button @click="numbers.a++">點我a+1</button>
-        <h2>numbers.b: {{numbers.b}}</h2>
-        <button @click="numbers.b++">點我b+1</button>
-        <button @click="numbers ={a:6666,b:8888}">換掉numbers</button>
-    </div>
-    <script>
-        Vue.config.productionTip = false //阻止Vue在啟動時生成生產提示
-        new Vue({
-            el: '#root',
-            data() {
-                return {
-                    isHot: true,
-                    numbers: {
-                        a: 1,
-                        b: 2
-                    }
-                }
-            },
-            computed: {},
-            methods: {},
-            watch: {
-                numbers: {
-                    deep: true,
-                    handler(newVal, oldVal) {
-                        console.log('numbers被監視到了', newVal, oldVal)
-                    }
-                }
-            }
-        })
-    </script>
+<body data-example="deep-watch">
+  <nav aria-label="範例導覽"><a href="../index.html">← 所有範例</a></nav>
+  <main id="root"></main>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

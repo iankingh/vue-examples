@@ -1,7 +1,12 @@
-<!-- 自製tableVue元件 -->
+<script setup>
+defineProps({ items: { type: Array, required: true } });
+defineEmits(['edit', 'del']);
+</script>
+
 <template>
-  <div>
-    <table class="table table-striped">
+  <div class="table-scroll">
+    <table>
+      <caption>聯絡人列表：props 傳入資料，emits 通知父元件操作</caption>
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -20,27 +25,12 @@
           <td>{{ item.phone }}</td>
           <td>{{ item.address }}</td>
           <td>
-            <button class="btn btn-primary" @click="edit(item)">Edit</button>
-            <button class="btn btn-danger" @click="del(item)">Delete</button>
+            <button type="button" :aria-label="`選擇${item.name}`" @click="$emit('edit', item)">Edit</button>
+            <button type="button" :aria-label="`刪除${item.name}`" @click="$emit('del', item)">Delete</button>
           </td>
         </tr>
+        <tr v-if="items.length === 0"><td colspan="6">沒有聯絡人</td></tr>
       </tbody>
     </table>
   </div>
 </template>
-<script>
-export default {
-    name: "tableVue",
-    props: ["items"],
-    methods: {
-        edit(item) {
-        this.$emit("edit", item);
-        },
-        del(item) {
-        this.$emit("del", item);
-        }
-    }
-
-    
-}
-</script>

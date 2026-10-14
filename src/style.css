@@ -1,0 +1,20 @@
+/* 共用閱讀樣式，讓每個範例保留獨立入口。 */
+:root {
+  font-family: system-ui, sans-serif;
+  color: #243247;
+  background: #f5f7fa;
+  line-height: 1.6;
+}
+body { max-width: 960px; margin: 0 auto; padding: 24px; }
+main { margin-top: 20px; padding: 24px; background: white; border: 1px solid #d7dee8; border-radius: 12px; }
+a { color: #1858a1; }
+button, input { font: inherit; }
+button { margin: 4px; padding: 6px 12px; cursor: pointer; }
+input { margin: 4px 8px; padding: 4px; max-width: 100%; box-sizing: border-box; }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #1858a1; outline-offset: 3px; }
+li { margin: 8px 0; }
+code { overflow-wrap: anywhere; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #d7dee8; padding: 8px; text-align: left; }
+.table-scroll { overflow-x: auto; }
+.controls { display: flex; gap: 8px; flex-wrap: wrap; }

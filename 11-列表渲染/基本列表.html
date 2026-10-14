@@ -1,62 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>基本列表</title>
-    <script src="../js/vue.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>列表渲染與 key | Vue 3 範例</title>
 </head>
-<body>
-    <!--準備一個基本的容器-->
-    <div id="root">
-        <h2>人員列表(List)</h2>
-        <ul>
-            <li v-for="person in persons" :key="person.id">
-                <span>{{person.id}}</span>
-                <span>{{person.name}}</span>
-                <span>{{person.age}}</span>
-                <input :placeholder="person.name" aria-label="未儲存的輸入">
-            </li>
-        </ul>
-        ---------------------------------------
-        <h2>人員列表(List)</h2>
-        <p>此處刻意用 index 作為 key；重排後，未受 Vue 綁定的輸入值會留在原位置，可能對應到另一位同學。</p>
-        <ul>
-            <li v-for="(person,index) in persons" :key="index">
-                {{index}}-{{person.name}}
-                <input :placeholder="person.name" aria-label="未儲存的輸入">
-            </li>
-        </ul>
-
-        ----------------------------------------
-        <h2>汽車訊息(Object)</h2>
-        <ul>
-            <li v-for="(value,key,index) in car" :key="index">
-                {{key}}-{{value}}
-            </li>
-        </ul>
-    </div>
-    <script type="text/javascript">
-        Vue.config.productionTip = false;
-        // 1.創建Vue實例
-        new Vue({
-            el: '#root',
-            data: {
-                persons: [
-                    {id: 1, name: '小明', age: 18},
-                    {id: 2, name: '小花', age: 19},
-                    {id: 3, name: '小美', age: 20},
-                    {id: 4, name: '小強', age: 21},
-                    {id: 5, name: '小雞', age: 22},
-                ],
-                car: {
-                    brand: 'BMW',
-                    price: 1000000,
-                    color: 'red'
-                }
-            }
-        })
-    </script>
+<body data-example="lists">
+  <nav aria-label="範例導覽"><a href="../index.html">← 所有範例</a></nav>
+  <main id="root"></main>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

@@ -1,45 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue-watch</title>
-    <script type="text/javascript" src="../js/vue.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>watch 監視 ref | Vue 3 範例</title>
 </head>
-<body>
-    <div id="root">
-        <h2>今天天氣很{{info}}</h2>
-        <button @click="changeWeather">切換天氣</button>
-    </div>
-    <script>
-        Vue.config.productionTip = false //阻止Vue在啟動時生成生產提示
-        new Vue({
-            el: '#root',
-            data() {
-                return {
-                    isHot: true
-                }
-            },
-            computed: {
-                info() {
-                    return this.isHot ? '炎熱' : '涼爽'
-                }
-            },
-            methods: {
-                changeWeather() {
-                    this.isHot = !this.isHot
-                }
-            },
-            watch: {
-                isHot: {
-                    handler(newVal, oldVal) {
-                        console.log('isHot被監視到了', newVal, oldVal)
-                    }
-                }
-            }
-        })
-    </script>
+<body data-example="watch">
+  <nav aria-label="範例導覽"><a href="../index.html">← 所有範例</a></nav>
+  <main id="root"></main>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
