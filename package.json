@@ -1,5 +1,5 @@
 {
-  "name": "vue-learning-browser-checks",
+  "name": "vue2-exercises-browser-checks",
   "private": true,
   "scripts": {
     "test": "node --test tests/*.test.mjs"
