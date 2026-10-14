@@ -37,6 +37,9 @@ async function open(t, mode, path) {
   t.after(() => page.close());
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
+  page.on('response', response => {
+    if (response.status() >= 400) errors.push(`HTTP ${response.status()}: ${response.url()}`);
+  });
   page.on('console', message => {
     if (['error', 'warning'].includes(message.type())) errors.push(message.text());
   });
