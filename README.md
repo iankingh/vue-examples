@@ -17,10 +17,10 @@ Vue 2 教材僅供歷史對照，其執行方式請見 `vue2` 分支的 README�
 ## 技術與環境
 
 - Vue `3.5.44`
-- Vite `8.3.4`、`@vitejs/plugin-vue` `6.0.10`
+- Vite `8.3.5`、`@vitejs/plugin-vue` `6.0.10`
 - JavaScript ES modules；目前不使用 TypeScript、Router 或 Pinia
-- Node.js `^20.19.0 || >=22.12.0`、npm
-- Playwright `1.63.0`：開發與正式建置的瀏覽器驗收
+- Node.js `24.22.1` LTS（`nvm use`）、npm `11.20.0`
+- Playwright `1.64.1`：開發與正式建置的瀏覽器驗收
 
 Vue 由 npm 與 lockfile 管理，頁面不依賴遠端 CDN。
 SFC 需要 Vite 編譯，請透過開發伺服器或正式版預覽開啟，不能直接以 `file://` 執行原始 HTML。
